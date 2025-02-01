@@ -1,0 +1,112 @@
+/* mobile layout */
+.container {
+    overflow: auto; 
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto auto minmax(25vh, auto) auto auto; 
+    grid-template-areas: 
+        "header"
+        "content"
+        "."
+        "menu"
+        "footer";
+    gap: 5px; 
+    min-height: 98vh; 
+    width: 100%;  
+    align-items: stretch; 
+    justify-items: stretch; 
+}
+
+/*used for debugging*/
+/*
+.container * {
+    border: 5px solid red; }*/
+
+.header {
+    grid-area: header;
+    background: #353673;
+    padding: 10px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 25px;
+
+    display: flex;
+    align-items: center; /* aligns text vertically */
+    justify-content: center; /* aligns text horizontally */
+}
+
+/* Content slots */
+.slot1,
+.slot2,
+.slot3,
+.slot4 {
+    display: flex;
+    background: #659ec2;
+    height: 2vh;
+    padding: 15px;
+    margin: 5px 10px;
+    flex: 1; 
+    justify-content: center; /* center content vertically */
+    align-items: center; /* center content horizontally */
+
+}
+
+.slot1,
+.slot2,
+.slot3,
+.slot4{
+    grid-area: content;
+}
+
+.menu {
+    grid-area: menu;
+    background: #659ec2;
+    padding: 50px;
+    text-align: center;
+    margin: 5px 10px;
+}
+
+.footer {
+    grid-area: footer;
+    background: #3e7ca3;
+    padding: 25px;
+    text-align: center;
+}
+
+/* tablet layout (768px and above) */
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(4, 1fr); 
+        grid-template-rows: auto auto minmax(25vh, auto) minmax(12vh, 1fr) auto; /* 5 rows */
+        grid-template-areas: 
+            "header header header header"
+            "content . . . "
+            ". . . ."
+            "menu menu menu menu"
+            "footer footer footer footer";
+        gap: 5px;
+    }
+    .header {
+        padding: 20px;
+        font-size: 35px;
+    }
+  }
+  
+/* desktop layout (1024px and above) */
+  @media (min-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(4, 1fr); 
+        grid-template-rows: auto auto minmax(25vh, auto) auto; /* 5 rows */
+        grid-template-areas: 
+            "header header header header"
+            "content . . menu "
+            ". . . menu"
+            "footer footer footer footer";
+        gap: 5px; 
+    }
+
+    .header{
+        font-size: 70px;
+    }
+
+  }
